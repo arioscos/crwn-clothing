@@ -3,10 +3,13 @@ import {
   createUserDocumentFromAuth
 } from "../../utils/firebase/firebase.utils";
 
-function SignIn() {
+import SignUpForm from "../../components/sign-up-form/sign-up-form.component";
+
+const SignIn = () => {
+  /*useEffect requires a function being passed in*/
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
-    //console.log(response);
+
     const userDocRef = await createUserDocumentFromAuth(user);
   };
 
@@ -14,8 +17,9 @@ function SignIn() {
     <div>
       <h1>Sign In Page</h1>
       <button onClick={logGoogleUser}>Sign in with Google Popup</button>
+      <SignUpForm />
     </div>
   );
-}
+};
 
 export default SignIn;
