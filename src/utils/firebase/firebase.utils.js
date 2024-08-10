@@ -13,23 +13,24 @@ import {
   getFirestore,
   doc,
   getDoc,
+  getDocs,
   setDoc,
   collection,
   writeBatch,
-  query,
-  getDocs
-} from "firebase/firestore";
+  query
+} from "firebase/firestore/lite";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-QUEds-kl9sxD91Hm56cl-HVjLsKlXAs",
-  authDomain: "crwn-clothing-db-168eb.firebaseapp.com",
-  projectId: "crwn-clothing-db-168eb",
-  storageBucket: "crwn-clothing-db-168eb.appspot.com",
-  messagingSenderId: "342691571987",
-  appId: "1:342691571987:web:9911ba8f57ddcc9743d2e6"
+  apiKey: "AIzaSyCJstmUtA9IGI1Hkz6_QKfwzHxVkQrnnXQ",
+  authDomain: "crwn-db-oscos.firebaseapp.com",
+  projectId: "crwn-db-oscos",
+  storageBucket: "crwn-db-oscos.appspot.com",
+  messagingSenderId: "1066606862508",
+  appId: "1:1066606862508:web:049bef22aaf600e1c9ff09"
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+export const db = getFirestore();
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -42,8 +43,6 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
-
-export const db = getFirestore();
 
 export const addCollectionAndDocuments = async (
   collectionKey,
@@ -63,7 +62,7 @@ export const addCollectionAndDocuments = async (
 };
 
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
+  const collectionRef = collection(db, "collections");
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);

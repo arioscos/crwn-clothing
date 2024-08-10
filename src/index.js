@@ -1,17 +1,18 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import "./index.scss";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
-import App from './App';
-import { UserProvider } from './contexts/user.context';
-import { CategoriesProvider } from './contexts/categories.context';
-import { CartProvider } from './contexts/cart.context';
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./contexts/user.context";
+import { CategoriesProvider } from "./contexts/categories.context";
+import { CartProvider } from "./contexts/cart.context";
 
-import './index.scss';
+import { createRoot } from "react-dom/client";
+const container = document.getElementById("root");
+const root = createRoot(container);
 
-const rootElement = document.getElementById('root');
-
-render(
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
@@ -22,6 +23,5 @@ render(
         </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-  rootElement
+  </React.StrictMode>
 );
